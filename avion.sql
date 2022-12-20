@@ -5,7 +5,7 @@ create database avion;
 CREATE TABLE Compagnie (id serial primary key, nom varchar(50) NOT NULL, siege varchar(50) NOT NULL, contact varchar(50) NOT NULL, email varchar(50), pwd varchar(50));
 CREATE TABLE Constructeur (id SERIAL NOT NULL, constructeur varchar(50) NOT NULL, PRIMARY KEY (id));
 CREATE TABLE Avion (id SERIAL NOT NULL, nom varchar(50) NOT NULL UNIQUE, photo varchar(255), longueur float8 NOT NULL, hauteur float8 NOT NULL, Constructeurid int4 NOT NULL, PRIMARY KEY (id));
-CREATE TABLE Kilometrage (Avionid int4 NOT NULL, dateDecolage timestamp NOT NULL, dateAtterrissage timestamp NOT NULL,kilometre float8 NOT NULL);
+CREATE TABLE Kilometrage (Avionid int4 NOT NULL, dateDecolage timestamp NOT NULL, dateAtterrissage timestamp NOT NULL,kilometreDebut float8 NOT NULL, kmFin float8 NOT NULL);
 ALTER TABLE Avion ADD CONSTRAINT FKAvion779185 FOREIGN KEY (Constructeurid) REFERENCES Constructeur (id);
 ALTER TABLE Kilometrage ADD CONSTRAINT FKKilometrag289279 FOREIGN KEY (Avionid) REFERENCES Avion (id);
 INSERT INTO Compagnie(nom, siege, contact,email,pwd) VALUES ('Mada Sky', 'Ivato', '034 91 893 15', 'mada.sky@gmail.com','madasky');
@@ -19,18 +19,17 @@ INSERT INTO Avion(id, nom, photo, longueur, hauteur, Constructeurid) VALUES (4, 
 INSERT INTO Avion(id, nom, photo, longueur, hauteur, Constructeurid) VALUES (5, 'Blackjack', 'http://localhost:6942/images/bird.jpg', 35, 11, 2);
 INSERT INTO Avion(id, nom, photo, longueur, hauteur, Constructeurid) VALUES (6, 'Antey', 'http://localhost:6942/images/antey.jpg', 31, 14, 3);
 INSERT INTO Avion(id, nom, photo, longueur, hauteur, Constructeurid) VALUES (7, 'Mriya', 'http://localhost:6942/images/mriya.jpg', 29, 10, 3);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (1, '2022-11-17 14:00', '2022-11-17 15:00', 1000);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (2, '2022-11-17 15:00', '2022-11-17 16:00', 800);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (3, '2022-11-18 7:00', '2022-11-18 9:00', 1500);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (4, '2022-11-18 10:00', '2022-11-18 11:00', 600);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (5, '2022-11-19 7:00', '2022-11-19 9:00', 200);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (6, '2022-11-19 19:00', '2022-11-19 20:00', 300);
-INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometre) VALUES (7, '2022-11-20 7:00', '2022-11-19 10:00', 1500);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (1, '2022-11-17 14:00', '2022-11-17 15:00', 1000, 1200);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (2, '2022-11-17 15:00', '2022-11-17 16:00', 800, 1000);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (3, '2022-11-18 7:00', '2022-11-18 9:00', 1500, 1700);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (4, '2022-11-18 10:00', '2022-11-18 11:00', 600, 700);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (5, '2022-11-19 7:00', '2022-11-19 9:00', 200, 400);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (6, '2022-11-19 19:00', '2022-11-19 20:00', 300, 400);
+INSERT INTO Kilometrage(Avionid, dateDecolage, dateAtterrissage, kilometreDebut, kmFin) VALUES (7, '2022-11-20 7:00', '2022-11-19 10:00', 1500, 1600);
 
 create or replace view v_avion as 
-select a.*, c.constructeur,k.dateDecolage, k.dateAtterrissage, k.kilometre from avion a 
-join constructeur c on a.Constructeurid=c.id 
-join kilometrage k on k.Avionid=a.id;
+select a.*, c.constructeur from avion a 
+join constructeur c on a.Constructeurid=c.id;
 
 create table assurance(
     id serial primary key,
