@@ -18,7 +18,7 @@ public class CompagnieRepository implements CompagnieDAO{
     private JdbcTemplate jdbcTemplate;
     
     public ArrayList<Compagnie> login(String email,String pwd) {
-        String sql = "select*from compagnie where email='"+email+"' and pwd='"+pwd+"'";
+        String sql = "select*from compagnie where email='"+email+"' and pwd=md5('"+pwd+"')";
         return (ArrayList<Compagnie>) jdbcTemplate.query(sql,new BeanPropertyRowMapper<Compagnie>(Compagnie.class));
     }
    

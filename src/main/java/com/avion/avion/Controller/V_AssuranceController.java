@@ -24,7 +24,7 @@ public class V_AssuranceController {
    
 
     /*  Assurance expiré dans 1 mois */
-    @RequestMapping(value = "/MadaSky/avions/1/assurance/{token}", method = RequestMethod.GET, produces = "application/json")
+    @RequestMapping(value = "/MadaSky/avions/1/assurance/expiration/{token}", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
     @CrossOrigin
     public Map<String, Object> getAvionExpire1Mois(@PathVariable("token") String token) {
@@ -40,7 +40,7 @@ public class V_AssuranceController {
     }
 
      /*  Assurance expiré dans 3 cmois */
-     @RequestMapping(value = "/MadaSky/avions/3/assurance/{token}", method = RequestMethod.GET, produces = "application/json")
+     @RequestMapping(value = "/MadaSky/avions/3/assurance/expiration/{token}", method = RequestMethod.GET, produces = "application/json")
      @ResponseBody
      @CrossOrigin
      public Map<String, Object> getAvionExpire3Mois(@PathVariable("token") String token) {

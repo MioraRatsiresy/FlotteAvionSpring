@@ -28,5 +28,12 @@ public class V_AvionRepository implements V_AvionDAO{
 		String sql = "select*from v_avion where id="+id;
         return (ArrayList<V_Avion>) jdbcTemplate.query(sql,new BeanPropertyRowMapper<V_Avion>(V_Avion.class));
 	}
+
+	@Override
+	public ArrayList<V_Avion> searchAvion(String search) {
+		String sql = "SELECT * from V_Avion where lower(nom) like '%"+search+"%' or lower(constructeur) like '%"+search+"%' or lower(hauteur::varchar) like '%"+search+"%' or lower(longueur::varchar) like '%"+search+"%'";
+        return  (ArrayList<V_Avion>) jdbcTemplate.query(sql,new BeanPropertyRowMapper<V_Avion>(V_Avion.class));
+
+	}
    
 }
