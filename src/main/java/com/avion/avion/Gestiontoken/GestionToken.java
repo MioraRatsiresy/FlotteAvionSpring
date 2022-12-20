@@ -1,8 +1,9 @@
-package com.vehicule.vehicule.Gestiontoken;
+package com.avion.avion.Gestiontoken;
 
 import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
-import com.vehicule.vehicule.Model.AdminSociete;
+
+import com.avion.avion.Modele.Compagnie;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -11,7 +12,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 public class GestionToken {
   private String secretcode = "miora";
 
-  public String generateToken(AdminSociete admin) {
+  public String generateToken(Compagnie admin) {
     String jwtToken = null;
     jwtToken = Jwts.builder().signWith(SignatureAlgorithm.HS256, secretcode)
         .setIssuedAt(new Date(System.currentTimeMillis()))
