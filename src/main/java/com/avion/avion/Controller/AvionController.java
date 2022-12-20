@@ -33,15 +33,18 @@ public class AvionController {
     //modification vehicule
     @RequestMapping(value = "/MadaSky/avions/id/update/{token}" , method = RequestMethod.PUT,produces="application/json")
 	@ResponseBody
-    public Map<String,String> updatePhotoAvion(HttpServletRequest request)
+    public Map<String,String> updatePhotoAvion(HttpServletRequest request,(@PathVariable("token") String token)
     {
        Avion a = new Avion();
-       a.setId(Integer.parseInt(request.getParameter("id")));
-       a.setPhoto(request.getParameter("photo"));
-        avion.updatePhotoAvion(a);
-        Map<String,String> map=new HashMap<>();
-        map.put("message","Update avec succès");
-        map.put("status","200");
+        GestionToken tok=new GestionToken();
+        try {
+        Claims cl=tok.testTokenClaims(token);
+        a.setId(Integer.parseInt(request.getParameter("id")));
+        a.setPhoto(request.getParameter("photo"));
+            map.put("data",  avion.updatePhotoAvion(a);
+        } catch (Exception e) {
+            map.put("error", e.getMessage());
+        }
         return map;
     }
 
