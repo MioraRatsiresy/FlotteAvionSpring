@@ -8,7 +8,7 @@ CREATE TABLE Avion (id SERIAL NOT NULL, nom varchar(50) NOT NULL UNIQUE, photo v
 CREATE TABLE Kilometrage (Avionid int4 NOT NULL, dateDecolage timestamp NOT NULL, dateAtterrissage timestamp NOT NULL,kilometreDebut float8 NOT NULL, kmFin float8 NOT NULL);
 ALTER TABLE Avion ADD CONSTRAINT FKAvion779185 FOREIGN KEY (Constructeurid) REFERENCES Constructeur (id);
 ALTER TABLE Kilometrage ADD CONSTRAINT FKKilometrag289279 FOREIGN KEY (Avionid) REFERENCES Avion (id);
-INSERT INTO Compagnie(nom, siege, contact,email,pwd) VALUES ('Mada Sky', 'Ivato', '034 91 893 15', 'mada.sky@gmail.com','madasky');
+INSERT INTO Compagnie(nom, siege, contact,email,pwd) VALUES ('Mada Sky', 'Ivato', '034 91 893 15', 'mada.sky@gmail.com','f4918978935c7e6560d9149473da0dab');
 INSERT INTO Constructeur(id, constructeur) VALUES (1, 'Airbus');
 INSERT INTO Constructeur(id, constructeur) VALUES (2, 'Boeing');
 INSERT INTO Constructeur(id, constructeur) VALUES (3, 'Antonov');
