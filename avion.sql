@@ -48,13 +48,16 @@ insert into assurance VALUES
 create view v_assurance as 
 select v.*, a.id as idAssurance, a.dateAssurance, a.dateExpiration from v_avion v join assurance a on v.id=a.idAvion;
 
+
+CREATE VIEW AssuranceMax AS select max(dateassurance) as dateassurancedernier,idavion from assurance group by idavion;
+
 create or replace view v_avionExpire3Mois as 
-SELECT *,age(dateexpiration,dateassurance) AS ecart 
-from v_assurance where EXTRACT(YEAR FROM age(dateexpiration,dateassurance)) * 12 + EXTRACT(MONTH FROM age(dateexpiration,dateassurance)) + (EXTRACT(DAY FROM age(dateexpiration,dateassurance))/30)::integer=3;
+SELECT *,age(dateexpiration,NOW()) AS ecart 
+from v_assurance where EXTRACT(YEAR FROM age(dateexpiration,NOW())) * 12 + EXTRACT(MONTH FROM age(dateexpiration,NOW())) + (EXTRACT(DAY FROM age(dateexpiration,NOW()))/30)::integer=3 and dateAssurance=(select dateassurancedernier from AssuranceMax where idavion=id);
 
 
 create or replace view v_avionExpire1Mois as 
-SELECT *,age(dateexpiration,dateassurance) AS ecart 
-from v_assurance where EXTRACT(YEAR FROM age(dateexpiration,dateassurance)) * 12 + EXTRACT(MONTH FROM age(dateexpiration,dateassurance)) + (EXTRACT(DAY FROM age(dateexpiration,dateassurance))/30)::integer=1;
+SELECT *,age(dateexpiration,NOW()) AS ecart 
+from v_assurance where EXTRACT(YEAR FROM age(dateexpiration,NOW())) * 12 + EXTRACT(MONTH FROM age(dateexpiration,NOW())) + (EXTRACT(DAY FROM age(dateexpiration,NOW()))/30)::integer=1 and dateAssurance=(select dateassurancedernier from AssuranceMax where idavion=id);
 
 
