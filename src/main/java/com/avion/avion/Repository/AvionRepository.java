@@ -19,7 +19,6 @@ public class AvionRepository implements AvionDAO{
     public void updatePhotoAvion(Avion avion)
     {
         String sql = "update avion set photo='"+avion.getPhoto()+"' where id="+avion.getId();
-        System.out.println(sql);
         jdbcTemplate.update(sql);
     }
 
