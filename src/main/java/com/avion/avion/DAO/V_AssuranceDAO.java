@@ -1,7 +1,8 @@
 package com.avion.avion.DAO;
 import java.util.ArrayList;
 
-import com.avion.avion.Model.V_Assurance;
+import com.avion.avion.Modele.V_Assurance;
+
 
 
 public interface V_AssuranceDAO {

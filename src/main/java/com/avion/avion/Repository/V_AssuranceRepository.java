@@ -8,7 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.avion.avion.DAO.V_AssuranceDAO;
-import com.avion.avion.Model.V_Assurance;
+import com.avion.avion.Modele.V_Assurance;
 
 @Repository
 public class V_AssuranceRepository implements V_AssuranceDAO{

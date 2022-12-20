@@ -1,4 +1,4 @@
-package com.avion.avion.Model;
+package com.avion.avion.Modele;
 import java.sql.Date;
 import java.sql.Timestamp;
 

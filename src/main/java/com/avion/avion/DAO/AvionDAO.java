@@ -1,7 +1,7 @@
 package com.avion.avion.DAO;
-import java.util.ArrayList;
 
-import com.avion.avion.Model.Avion;
+import com.avion.avion.Modele.Avion;
+
 
 
 public interface AvionDAO {

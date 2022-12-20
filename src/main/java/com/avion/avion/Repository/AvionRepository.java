@@ -3,12 +3,11 @@ package com.avion.avion.Repository;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMAvionapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.avion.avion.DAO.AvionDAO;
-import com.avion.avion.Model.Avion;
+import com.avion.avion.Modele.Avion;
 
 @Repository
 public class AvionRepository implements AvionDAO{
