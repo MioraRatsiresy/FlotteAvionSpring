@@ -49,14 +49,15 @@ public class AvionController {
     @ResponseBody
     @CrossOrigin
     public Map<String, Object> updatePhotoAvion(@RequestBody String photo,HttpServletRequest request, @PathVariable("token") String token, @PathVariable("id") int id) {
+        System.out.println("fghttjjjt");
         Map<String, Object> map = new HashMap<>();
         Avion a = new Avion();
         GestionToken tok = new GestionToken();
         try {
             Claims cl = tok.testTokenClaims(token);
             a.setId(id);
-            //System.out.println("Sary: "+);
-            a.setPhoto(photo.split("data:image/png;base64,")[1]);
+            System.out.println("------------------------------------------------------------------------");
+            a.setPhoto(photo.split("data:image/jpeg;base64,")[1]);
             //update 
            avion.updatePhotoAvion(a);
             map.put("status","Update photo with succes");
