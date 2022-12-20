@@ -44,15 +44,15 @@ public class AvionController {
         return map;
     }
     // modification vehicule
-    @RequestMapping(value = "/MadaSky/avions/id/update/{token}", method = RequestMethod.PUT, produces = "application/json")
+    @RequestMapping(value = "/MadaSky/avions/{id}/update/{token}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseBody
-    public Map<String, Object> updatePhotoAvion(HttpServletRequest request, @PathVariable("token") String token) {
+    public Map<String, Object> updatePhotoAvion(HttpServletRequest request, @PathVariable("token") String token, @PathVariable("id") int id) {
         Map<String, Object> map = new HashMap<>();
         Avion a = new Avion();
         GestionToken tok = new GestionToken();
         try {
             Claims cl = tok.testTokenClaims(token);
-            a.setId(Integer.parseInt(request.getParameter("id")));
+            a.setId(id);
             a.setPhoto(request.getParameter("photo"));
             //update 
             avion.updatePhotoAvion(a);
