@@ -1,5 +1,6 @@
 package com.avion.avion.Repository;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class AvionRepository implements AvionDAO{
     public void updatePhotoAvion(Avion avion)
     {
         String sql = "update avion set photo='"+avion.getPhoto()+"' where id="+avion.getId();
+        System.out.println(sql);
         jdbcTemplate.update(sql);
     }
 

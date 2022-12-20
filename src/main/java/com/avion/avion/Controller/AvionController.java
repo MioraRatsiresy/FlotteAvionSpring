@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,16 +47,18 @@ public class AvionController {
     // modification vehicule
     @RequestMapping(value = "/MadaSky/avions/{id}/update/{token}", method = RequestMethod.PUT, produces = "application/json")
     @ResponseBody
-    public Map<String, Object> updatePhotoAvion(HttpServletRequest request, @PathVariable("token") String token, @PathVariable("id") int id) {
+    @CrossOrigin
+    public Map<String, Object> updatePhotoAvion(@RequestBody String photo,HttpServletRequest request, @PathVariable("token") String token, @PathVariable("id") int id) {
         Map<String, Object> map = new HashMap<>();
         Avion a = new Avion();
         GestionToken tok = new GestionToken();
         try {
             Claims cl = tok.testTokenClaims(token);
             a.setId(id);
-            a.setPhoto(request.getParameter("photo"));
+            //System.out.println("Sary: "+);
+            a.setPhoto(photo.split("data:image/png;base64,")[1]);
             //update 
-            avion.updatePhotoAvion(a);
+           avion.updatePhotoAvion(a);
             map.put("status","Update photo with succes");
         } catch (Exception e) {
             map.put("error", e.getMessage());
