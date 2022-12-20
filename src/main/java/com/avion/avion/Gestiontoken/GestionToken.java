@@ -1,8 +1,6 @@
 package com.avion.avion.Gestiontoken;
 
 import java.util.Date;
-import javax.servlet.http.HttpServletRequest;
-
 import com.avion.avion.Modele.Compagnie;
 
 import io.jsonwebtoken.Claims;
