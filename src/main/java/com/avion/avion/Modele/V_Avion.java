@@ -5,6 +5,8 @@
  */
 package com.avion.avion.Modele;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Mbola
@@ -114,6 +116,14 @@ public class V_Avion {
      */
     public void setConstructeur(String constructeur) {
         this.constructeur = constructeur;
+    }
+    private ArrayList<Kilometrage> kilometrage;
+
+    public ArrayList<Kilometrage> getKilometrage() {
+       return kilometrage;
+    }
+    public void setKilometrage(ArrayList<Kilometrage> kilometrage) {
+        this.kilometrage = kilometrage;
     }
 
 }

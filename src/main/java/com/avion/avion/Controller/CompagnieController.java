@@ -60,7 +60,7 @@ public class CompagnieController {
 
     /*LOGOUT*/
 
-    @RequestMapping(value = "/MadaSky/logout" , method = RequestMethod.GET,produces="application/json")
+    @RequestMapping(value = "/MadaSky/user/logout" , method = RequestMethod.GET,produces="application/json")
 	@ResponseBody
     @CrossOrigin
     public Map<String,String> deconnexion(HttpServletRequest request){
